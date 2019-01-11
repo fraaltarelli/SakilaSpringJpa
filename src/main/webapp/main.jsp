@@ -6,6 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Home Page</title>
+
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<!-- Import dei CSS -->
 </head>
 <body>
 	<div style="text-align: center;">
@@ -91,5 +94,9 @@
 			</table>
 		</c:if>
 	</div>
+	
+	<!-- <script type="text/javascript">
+		getContinents()
+	</script> -->
 </body>
 </html>
