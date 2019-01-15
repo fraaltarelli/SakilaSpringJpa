@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="film")
 public class Film {
@@ -43,6 +45,7 @@ public class Film {
 	@Column(name="length")
 	private Integer length;
 	
+	@JsonIgnore
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
 	@JoinTable(
 	        name = "film_actor",
@@ -57,6 +60,7 @@ public class Film {
 	)
 	private List<Attore> attori;
 	
+	@JsonIgnore
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
 	@JoinTable(
 	        name = "film_category",

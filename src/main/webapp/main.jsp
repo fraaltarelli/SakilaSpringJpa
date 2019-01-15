@@ -1,28 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Home Page</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	
+</script>
 
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <!-- Import dei CSS -->
+<script type="text/javascript" src="/js/film.js"></script>
+<!-- Import Javascript -->
+<script type="text/javascript" src="/js/categoria.js"></script>
+
 </head>
 <body>
-	<div style="text-align: center;">
-		<c:if test="${allCategories != null}">
-			<form action="/ricercaFilmPerCategoria">
-				<strong>Ricerca film per categoria</strong> <br> <select
-					name="categoriaFilm">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col" id="formRicercaFilmPerCategoria">
+				<strong>Ricerca film per categoria</strong> <br> <select id="categoriaScelta">
+				</select>
+				<button onclick="cercaFilmPerCategoria()">Cerca</button>
 
-					<c:forEach items="${allCategories}" var="categoria">
-						<option value="${categoria.id}">${categoria.name}</option>
-					</c:forEach>
-				</select> <input type="submit" name="cercaFilmPerCategoria" value="Cerca">
-			</form>
-		</c:if>
+			</div>
+		</div>
 		<br>
 
 		<c:if test="${allActors != null}">
@@ -94,9 +104,15 @@
 			</table>
 		</c:if>
 	</div>
-	
-	<!-- <script type="text/javascript">
-		getContinents()
-	</script> -->
+	</div>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+		crossorigin="anonymous"></script>
 </body>
 </html>
