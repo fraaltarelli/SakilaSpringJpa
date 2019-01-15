@@ -15,5 +15,8 @@ public interface FilmRepository extends JpaRepository<Film, Integer>{
 //	@Query("select f from Film f where f.title like concat('%',:filmCercato,'%')")
 //	public List<Film> findByFilmCercato(@Param("filmCercato") String filmCercato);
 	public List<Film> findByTitleContaining(String filmCercato);
+	
+	@Query("select films from Categoria c where c.id = :categoryId")
+	public List<Film> findByCategoryId(@Param("categoryId") Integer categoryId);
 
 }

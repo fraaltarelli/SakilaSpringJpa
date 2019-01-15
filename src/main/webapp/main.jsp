@@ -103,7 +103,8 @@
 				</c:forEach>
 			</table>
 		</c:if>
-	</div>
+		
+		<p id="p1"></p>
 	</div>
 
 	<script
