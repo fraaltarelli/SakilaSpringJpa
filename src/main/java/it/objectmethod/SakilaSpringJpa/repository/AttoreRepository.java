@@ -15,4 +15,6 @@ public interface AttoreRepository extends JpaRepository<Attore, Integer>{
 	@Query("select a from Attore a where a.firstName like concat('%',:attoreCercato,'%') or a.lastName like concat('%',:attoreCercato,'%')")
 	public List<Attore> findByAttoreCercato(@Param("attoreCercato") String attoreCercato);
 
+	@Query("select attori from Film f where f.id = :filmId")
+	public List<Attore> findByFilmId(@Param("filmId") Integer filmId);
 }

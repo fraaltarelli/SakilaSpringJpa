@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	inizioFormRicercaFilmPerCategoria();
+	inizioFormRicercaFilmPerAttore();
 });
 
 function inizioFormRicercaFilmPerCategoria() {
@@ -8,8 +9,7 @@ function inizioFormRicercaFilmPerCategoria() {
 		url: "/api/categoria/find-all",
 		cache: false,
 		dataType: "json",
-		success: function (result) { 
-			var allCategories = result;
+		success: function (allCategories) { 
 			var html= '';
 			for (i=0; i< allCategories.length; i++){
 			html+= '<option value='+allCategories[i].id+'>'+allCategories[i].name+'</option>';

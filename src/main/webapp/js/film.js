@@ -17,31 +17,61 @@ function cercaFilmPerCategoria(){
 	});
 }
 
+function cercaFilmPerAttoreDaSelect(){
+	var idAttoreScelto = $("#attoreScelto option:selected").val();
+	filmPerAttore(idAttoreScelto);
+}
+
 function mostraListaFilm(films){
 	
 //	var testo = films[1].title;
 //	$("#p1").text(testo);
-	
-	
-	
+	var html='';
 //	<c:if test="${listaFilm != null }">
-//
-//	<table width="75%" border="1" align="center">
-//		<tr>
-//			<th width="40%">Titolo</th>
-//			<th width="24%">Costo</th>
-//			<th width="24%">Durata</th>
-//			<th width="12%">Anno</th>
-//		</tr>
-//		<c:forEach items="${listaFilm}" var="film">
-//			<tr>
-//				<td width="40%"><a href="/attoriPerFilm/${film.id}">
-//						${film.title} </a></td>
-//				<td width="24%">${film.rentalRate}&nbsp;$</td>
-//				<td width="24%">${film.length}&nbsp;min</td>
-//				<td width="12%">${film.releaseYear}</td>
-//			</tr>
-//		</c:forEach>
-//	</table>
-//</c:if>
+	html+='<table class="table text-center"> <thead> <tr>'
+		    +'<th scope="col-6">Titolo</th>'
+			+'<th scope="col-2">Costo</th>'
+			+'<th scope="col-2">Durata</th>'
+			+'<th scope="col-2">Anno</th>'
+			+'</tr></thead> <tbody>';
+	   for(var i=0; i<films.length; i++){
+		   html+='<tr> <td scope="col-6"> <button onclick="attoriPerFilm('+"'"+films[i].id+"'"+')">'
+//	            <a href="/attoriPerFilm/${film.id}">
+					+films[i].title+' </button></td>'
+				+'<td scope="col-2">'+films[i].rentalRate+'&nbsp;$</td>'
+				+'<td scope="col-2">'+films[i].length+'&nbsp;min</td>'
+				+'<td scope="col-2">'+films[i].releaseYear+'</td></tr>';
+	   }
+      html+='</tbody></table>';
+      $("#listaFilm").html(html);
+      $("#listaAttori").hide();
+      $("#listaFilm").show();
 }
+
+
+function filmPerAttore(attoreId){
+	$.ajax({
+		type: "GET",
+		url: "api/film/findByActorId?actorId="+attoreId,
+		cache: false,
+		dataType: "json",
+		success: function (films) { 
+			mostraListaFilm(films);
+		}
+	});
+}
+
+
+function cercaFilm(){
+	var titoloCercato = $("#ricercaFilm").val();
+	$.ajax({
+		type: "GET",
+		url: "/api/film/find-by-soughtTitle?titoloCercato="+titoloCercato,
+		cache: false,
+		dataType: "json",
+		success: function (films) { 
+			mostraListaFilm(films);
+		}
+	});
+}
+

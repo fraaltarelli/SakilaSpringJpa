@@ -25,6 +25,11 @@ public class FilmRestController {
 		return filmRepo.findOne(id);
 	}
 	
+	@GetMapping("film/findByActorId")
+	List<Film> findByActorId(@RequestParam("actorId") Integer actorId) {
+		return filmRepo.findByActorId(actorId);
+	}
+	
 	@GetMapping("film/find-by-categoryId")
 	List<Film> findByCategoryId(@RequestParam("categoryId") Integer categoryId) {
 		return filmRepo.findByCategoryId(categoryId);

@@ -21,54 +21,39 @@
 <script type="text/javascript" src="/js/film.js"></script>
 <!-- Import Javascript -->
 <script type="text/javascript" src="/js/categoria.js"></script>
+<script type="text/javascript" src="/js/attore.js"></script>
 
 </head>
 <body>
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col" id="formRicercaFilmPerCategoria">
-				<strong>Ricerca film per categoria</strong> <br> <select id="categoriaScelta">
+				<strong>Ricerca film per categoria</strong> &nbsp; <select
+					id="categoriaScelta">
 				</select>
 				<button onclick="cercaFilmPerCategoria()">Cerca</button>
-
-			</div>
+		&nbsp;&nbsp;&nbsp;
+				<strong>Ricerca film per attore</strong> &nbsp; <select
+					id="attoreScelto">
+				</select> <button onclick="cercaFilmPerAttoreDaSelect()"> Cerca </button>
 		</div>
-		<br>
-
-		<c:if test="${allActors != null}">
-			<form action="/ricercaFilmPerAttore">
-				<strong>Ricerca film per attore</strong> <br> <select
-					name="attoreId">
-					<c:forEach items="${allActors}" var="attore">
-						<option value="${attore.id}">${attore.firstName}&nbsp
-							${attore.lastName}</option>
-					</c:forEach>
-				</select> <input type="submit" name="cercaFilmPerAttore" value="Cerca">
-			</form>
-		</c:if>
-
-		<br>
-		<form action="/ricercaAttore">
-			<input type="text" name="ricercaAttore"> <input type="submit"
-				name="cercaAttore" value="Cerca Attore">
-		</form>
-		<br>
-
-		<form action="/ricercaFilm">
-			<input type="text" name="ricercaFilm"> <input type="submit"
-				name="cercaFilm" value="Cerca Film">
-		</form>
-		<br>
+		<div class="row justify-content-center marginTopRow">
+			<input type="text" id="ricercaAttore">
+			<button onclick="cercaAttore()">Cerca Attore</button>
+        &nbsp;
+			<input type="text" id="ricercaFilm"> 
+			<button onclick="cercaFilm()">Cerca Film</button>
+	    &nbsp;
 
 		<form action="/inserimentoFilm">
 			<input type="submit" name="inserimentoFilm"
 				value="Inserisci un nuovo film">
 		</form>
-		<br>
+		&nbsp;
+		</div>
+        <div class="row justify-content-center marginTopRowLarge">
 
-
-
-		<c:if test="${listaFilm != null }">
+		<div id="listaFilm"></div>
+		<%-- <c:if test="${listaFilm != null }">
 
 			<table width="75%" border="1" align="center">
 				<tr>
@@ -87,9 +72,11 @@
 					</tr>
 				</c:forEach>
 			</table>
-		</c:if>
+		</c:if> --%>
 
-		<c:if test="${listaAttori != null }">
+
+		<div id="listaAttori"></div>
+		<%-- <c:if test="${listaAttori != null }">
 			<table width="50%" border="1" align="center">
 				<tr>
 					<th width="50%">Attori</th>
@@ -102,8 +89,8 @@
 					</tr>
 				</c:forEach>
 			</table>
-		</c:if>
-		
+		</c:if> --%>
+        </div>
 		<p id="p1"></p>
 	</div>
 

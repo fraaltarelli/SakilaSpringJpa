@@ -18,5 +18,8 @@ public interface FilmRepository extends JpaRepository<Film, Integer>{
 	
 	@Query("select films from Categoria c where c.id = :categoryId")
 	public List<Film> findByCategoryId(@Param("categoryId") Integer categoryId);
+	
+	@Query("select films from Attore a where a.id = :actorId")
+	public List<Film> findByActorId(@Param("actorId") Integer actorId);
 
 }
