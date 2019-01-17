@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -30,10 +30,13 @@
 						&nbsp; $</td>
 					<td width="15%"><input type="number" name="durata" min="1"
 						max="65535" required></td>
-					<td width="15%"><select name="categoria">
+					<td width="15%"><select id="categoriaSceltaInserimentoFilm"></select>
+					       name="categoria">
 							<c:forEach items="${allCategories}" var="categoria">
 								<option value="${categoria.id}">${categoria.name}</option>
-							</c:forEach></td>
+							</c:forEach>
+							
+							</td>
 
 					<td width="14%"><input type="number" name="anno" min="1930"
 						max="2100" value="2000" required></td>
@@ -60,4 +63,4 @@
 	</div>
 
 </body>
-</html>
+</html> --%>

@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	inizioFormRicercaFilmPerCategoria();
 	inizioFormRicercaFilmPerAttore();
+	inizioAllActorsFormInserimentoFilm();
 });
 
 function inizioFormRicercaFilmPerCategoria() {
@@ -15,6 +16,7 @@ function inizioFormRicercaFilmPerCategoria() {
 			html+= '<option value='+allCategories[i].id+'>'+allCategories[i].name+'</option>';
 			}
 			$("#categoriaScelta").html(html);
+			$("#categoriaSceltaInserimentoFilm").html(html);
 		}
 
 	});

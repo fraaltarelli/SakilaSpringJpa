@@ -27,70 +27,109 @@
 <body>
 	<div class="container">
 		<div class="row justify-content-center">
-				<strong>Ricerca film per categoria</strong> &nbsp; <select
-					id="categoriaScelta">
-				</select>
-				<button onclick="cercaFilmPerCategoria()">Cerca</button>
-		&nbsp;&nbsp;&nbsp;
-				<strong>Ricerca film per attore</strong> &nbsp; <select
-					id="attoreScelto">
-				</select> <button onclick="cercaFilmPerAttoreDaSelect()"> Cerca </button>
+			<strong>Ricerca film per categoria</strong> &nbsp; <select
+				id="categoriaScelta">
+			</select>
+			<button onclick="cercaFilmPerCategoria()">Cerca</button>
+			&nbsp;&nbsp;&nbsp; <strong>Ricerca film per attore</strong> &nbsp; <select
+				id="attoreScelto">
+			</select>
+			<button onclick="cercaFilmPerAttoreDaSelect()">Cerca</button>
 		</div>
 		<div class="row justify-content-center marginTopRow">
 			<input type="text" id="ricercaAttore">
 			<button onclick="cercaAttore()">Cerca Attore</button>
-        &nbsp;
-			<input type="text" id="ricercaFilm"> 
+			&nbsp; <input type="text" id="ricercaFilm">
 			<button onclick="cercaFilm()">Cerca Film</button>
-	    &nbsp;
+			&nbsp; &nbsp; &nbsp;
 
-		<form action="/inserimentoFilm">
-			<input type="submit" name="inserimentoFilm"
-				value="Inserisci un nuovo film">
-		</form>
-		&nbsp;
+			<form action="/inserimentoFilm">
+				<input type="submit" name="inserimentoFilm"
+					value="Inserisci un nuovo film">
+			</form>
+			&nbsp;
 		</div>
-        <div class="row justify-content-center marginTopRowLarge">
+		<div class="row justify-content-center marginTopRowLarge">
 
-		<div id="listaFilm"></div>
-		<%-- <c:if test="${listaFilm != null }">
+			<div id="listaFilm"></div>
 
-			<table width="75%" border="1" align="center">
-				<tr>
-					<th width="40%">Titolo</th>
-					<th width="24%">Costo</th>
-					<th width="24%">Durata</th>
-					<th width="12%">Anno</th>
-				</tr>
-				<c:forEach items="${listaFilm}" var="film">
-					<tr>
-						<td width="40%"><a href="/attoriPerFilm/${film.id}">
-								${film.title} </a></td>
-						<td width="24%">${film.rentalRate}&nbsp;$</td>
-						<td width="24%">${film.length}&nbsp;min</td>
-						<td width="12%">${film.releaseYear}</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if> --%>
+			<div id="listaAttori"></div>
 
 
-		<div id="listaAttori"></div>
-		<%-- <c:if test="${listaAttori != null }">
-			<table width="50%" border="1" align="center">
-				<tr>
-					<th width="50%">Attori</th>
-				</tr>
-				<c:forEach items="${listaAttori}" var="attore">
-					<tr>
 
-						<td width="50%"><a href="/filmPerAttore/${attore.id}">
-								${attore.firstName} &nbsp; ${attore.lastName} </a></td>
-					</tr>
-				</c:forEach>
-			</table>
-		</c:if> --%>
-        </div>
+
+			<div id="divInserimentoFilm">
+
+				<div class="row justify-content-center">
+					<p id="messaggioDivInserimentoFilm">${messaggio}</p>
+				</div>
+				
+				
+					<table class="table text-center">
+						<thead>
+							<tr>
+								<th scope="col-4">Titolo</th>
+								<th scope="col-2">Prezzo (numero decimale, formato: 12.89)</th>
+								<th scope="col-2">Durata in minuti</th>
+								<th scope="col-2">Categoria</th>
+								<th scope="col-2">Anno</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="col-4"><input type="text" size="35" id="titoloInserito"
+									maxlength="30" required></td>
+								<td scope="col-2"><input type="text" id="prezzoInserito" required>
+									&nbsp; $</td>
+								<td scope="col-2"><input type="number" id="durataInserita" min="1"
+									max="65535" required> min </td>
+								<td scope="col-2"><select id="categoriaSceltaInserimentoFilm"></select>
+								        <%-- name="categoria">
+										<c:forEach items="${allCategories}" var="categoria">
+											<option value="${categoria.id}">${categoria.name}</option>
+										</c:forEach> --%>
+										
+										</td>
+
+								<td scope="col-2"><input type="number" id="annoInserito" min="1930"
+									max="2100" value="2000" required></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="row justify-content-center">
+						<button onclick="inserisciFilm()">Inserisci Film</button>
+					</div>
+					<br>
+					<br>
+					
+					<table class="table table-sm text-center">
+					<thead>
+						<tr>
+							<th>Seleziona gli attori del film:</th>
+						</tr>
+						</thead>
+						<tbody id="attoriCheckBoxTableBody"></tbody>
+						
+						
+						<%-- <c:forEach items="${allActors}" var="attore">
+							<tr>
+
+								<td><input type="checkbox" name="idAttoriDaInserire"
+									value="${attore.id}"> ${attore.firstName} &nbsp;
+									${attore.lastName} <br></td>
+							</tr>
+						</c:forEach> --%>
+						
+						
+					</table>
+
+			</div>
+
+
+
+
+
+		</div>
 		<p id="p1"></p>
 	</div>
 

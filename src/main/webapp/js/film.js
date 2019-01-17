@@ -75,3 +75,85 @@ function cercaFilm(){
 	});
 }
 
+
+function inserisciFilm(){
+	
+	var filmDaInserireJson = {};
+	
+	filmDaInserireJson.id = 0;
+	var titoloInserito = $("#titoloInserito").val();
+	filmDaInserireJson.title = titoloInserito;
+	var prezzoInserito = $("#prezzoInserito").val();
+	filmDaInserireJson.rentalRate = prezzoInserito;
+	filmDaInserireJson.languageId = 1;
+	var durataInserita = $("#durataInserita").val();
+	filmDaInserireJson.length = durataInserita;
+	var categoriaScelta = $("#categoriaSceltaInserimentoFilm").val();
+	var annoInserito = $("#annoInserito").val();
+	filmDaInserireJson.releaseYear = annoInserito;
+	var idAttoriDaInserire = document.getElementsByName("idAttoriDaInserire");
+	var attoriArray = [];
+	
+//	var attoreJson ={};
+//	var text = "";
+	
+	for(var i=0; i< idAttoriDaInserire.length; i++){
+		
+		
+		
+		if(idAttoriDaInserire[i].checked==true){
+			var id = idAttoriDaInserire[i].value;
+//		text+= idAttoriDaInserire[i].value;
+//			$.ajax({
+//				type: "GET",
+//				url: "api/attore/findOne/"+id,
+//				cache: false,
+//				dataType: "json",
+//				success: function (attore) { 
+//					attoriArray.push(attore);
+////					filmDaInserireJson.attori = attore;
+//				}
+//			});
+		}
+//		text = JSON.stringify(attoreJson);
+	}
+	
+	filmDaInserireJson.attori = attoriArray;
+	
+//	var obj = JSON.parse(filmDaInserireJson);
+//	continua(filmDaInserireJson);
+	
+	$.ajax({
+		type: "POST",
+		url: "/api/film/insert-update",
+		cache: false,
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify(filmDaInserireJson),
+		dataType: "json",
+		success: function (result) { 
+			
+			$("#p1").text("salvataggio del film riuscito");
+		}
+
+	});
+	
+//	$("#p1").text(text);
+	
+}
+
+//function continua(filmDaInserireJson){
+//	$.ajax({
+//		type: "POST",
+//		url: "/api/film/insert-update",
+//		cache: false,
+//		contentType: "application/json; charset=utf-8",
+//		data: filmDaInserireJson,
+//		dataType: "json",
+//		success: function (result) { 
+////			citiesByCountryCode(countryCode);
+////			$("#messaggioForm").text("Salvataggio riuscito della citta "+name);
+//			$("#p1").text("salvataggio del film riuscito");
+//		}
+//
+//	});
+//}

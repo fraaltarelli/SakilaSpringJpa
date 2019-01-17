@@ -1,3 +1,27 @@
+var attoriGlobal;
+
+
+function inizioAllActorsFormInserimentoFilm(){
+	var html='';
+	$.ajax({
+		type: "GET",
+		url: "/api/attore/find-all",
+		cache: false,
+		dataType: "json",
+		success: function (attori) { 
+			attoriGlobal=attori;
+			for(var i=0; i<attori.length; i++){
+			html+='<tr> <td><input type="checkbox" name="idAttoriDaInserire"'
+				+'value="'+attori[i].id+'"> '+attori[i].firstName+' &nbsp; '
+				+attori[i].lastName+' </td> </tr>';
+			}
+			$("#attoriCheckBoxTableBody").html(html);
+		}
+	});
+}
+
+
+
 function attoriPerFilm(filmId){
 		$.ajax({
 			type: "GET",

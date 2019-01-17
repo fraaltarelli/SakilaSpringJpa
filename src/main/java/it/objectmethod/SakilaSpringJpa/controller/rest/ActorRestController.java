@@ -28,6 +28,11 @@ public class ActorRestController {
 		return attoreRepo.findAll();
 	}
 	
+	@GetMapping("attore/findOne/{id}")
+	Attore findOne(@PathVariable("id") Integer id){
+		return attoreRepo.findOne(id);
+	}
+	
 	@GetMapping("attore/find-by-filmId/{filmId}")
 	List<Attore> findByFilmId(@PathVariable("filmId") Integer filmId){
 		return attoreRepo.findByFilmId(filmId);
