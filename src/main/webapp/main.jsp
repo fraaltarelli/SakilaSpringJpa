@@ -17,9 +17,9 @@
 </script>
 
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-<!-- Import dei CSS -->
+
+<script type="text/javascript" src="/js/main.js"></script>
 <script type="text/javascript" src="/js/film.js"></script>
-<!-- Import Javascript -->
 <script type="text/javascript" src="/js/categoria.js"></script>
 <script type="text/javascript" src="/js/attore.js"></script>
 
