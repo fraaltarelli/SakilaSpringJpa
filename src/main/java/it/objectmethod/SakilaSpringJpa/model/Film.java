@@ -13,6 +13,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="film")
@@ -23,14 +26,18 @@ public class Film {
 	@Column(name="film_id")
 	private Integer id;
 	
+	
 	private String title;
+	
 	
 	@Column(name="release_year")
 	private Integer releaseYear;
 	
+	
 	@Column(name="rental_rate")
 	private Double rentalRate;
 	
+
 	@Column(name="language_id")
 	private Integer languageId;
 	
@@ -42,6 +49,7 @@ public class Film {
 		this.languageId = languageId;
 	}
 
+	
 	@Column(name="length")
 	private Integer length;
 	
@@ -75,11 +83,12 @@ public class Film {
 	)
 	private List<Categoria> categorie;
 
-
+	
 	public List<Categoria> getCategorie() {
 		return categorie;
 	}
 
+	
 	public void setCategorie(List<Categoria> categorie) {
 		this.categorie = categorie;
 	}
@@ -88,6 +97,7 @@ public class Film {
 		return attori;
 	}
 
+	@JsonIgnore
 	public void setAttori(List<Attore> attori) {
 		this.attori = attori;
 	}

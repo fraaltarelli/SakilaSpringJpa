@@ -25,9 +25,9 @@ function initializeFormRicerca() {
 function initializeActorListFormInsertFilm(){
 	var html= '';
 	for(var i=0; i<attori.length; i++){
-		html+='<tr class="attori-form-insert" ><input type="checkbox" '
-			+'value="'+attori[i].id+'"> <span name="first-name">'+attori[i].firstName+'</span><span name="last-name"> '
-			+attori[i].lastName+' </span> </tr>';
+		html+='<tr class="attori-form-insert" > <td><input type="checkbox" '
+			+'value="'+attori[i].id+'"> <span name="first-name">'+attori[i].firstName+'</span> <span name="last-name"> '
+			+attori[i].lastName+' </span> </td></tr>';
 	}
 	$("#attoriCheckBoxTableBody").html(html);
 }

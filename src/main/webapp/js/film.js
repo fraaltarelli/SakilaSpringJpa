@@ -86,28 +86,34 @@ function inserisciFilm(){
 	var attoriDaInserireList = [];
 	$(".attori-form-insert input[type=checkbox]:checked").each(function(){
 		var tmp = {};
-		tmp.id = $(this).val();
-		var innerSpan = $(this).find("#first-name");
+		tmp.id = parseInt($(this).val(), 10);
+		parseInt($('#myInput').val(), 10);
+		var innerSpan = $(this).closest("tr").find("span:first");
 		tmp.firstName = innerSpan.html();
-		innerSpan = $(this).find("#last-name");
+		innerSpan = $(this).closest("tr").find("span:last");
 		tmp.lastName = innerSpan.html();
+		$("#p1").text(tmp.firstName+" "+tmp.lastName);
 		attoriDaInserireList.push(tmp);
 	});
-
+	
+//	attoriDaInserireList.push(attori[1]);
+//	attoriDaInserireList.push(attori[2]);
+    
+	for(var i=0; i<attori.length; i++)
+		if(i==(attori.length-1)){
 	filmDaInserireJson.attori = attoriDaInserireList;
-
+    var jsonString = JSON.stringify(filmDaInserireJson);
 	$.ajax({
 		type: "POST",
 		url: "/api/film/insert-update",
-		cache: false,
-		contentType: "application/json; charset=utf-8",
-		data: JSON.stringify(filmDaInserireJson),
+		contentType: "application/json",
+		data: jsonString,
 		dataType: "json",
 		success: function (result) { 
 
-			$("#p1").text("salvataggio del film riuscito");
+			$("#p1").text(jsonString);
 		}
 
 	});
-
+		}
 }
